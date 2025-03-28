@@ -32,7 +32,7 @@
 
 ?>
 
-  <h1 class="text-center">ADINA EL NÚMERO JEJE</h1>
+  <h1 class="text-center">NÚMERO PAR / IMPAR</h1>
 
   <?php if (isset($mensaje)) { ?>
     <div class="alert alert-<?php echo $alertType?> text-center" style="max-width: 400px; margin: 25px auto;">

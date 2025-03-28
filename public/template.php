@@ -30,11 +30,22 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-              <li><a href="#" class="nav-link px-2">Features</a></li>
-              <li><a href="#" class="nav-link px-2">Pricing</a></li>
-              <li><a href="#" class="nav-link px-2">FAQs</a></li>
-              <li><a href="#" class="nav-link px-2">About</a></li>
+              <!-- <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li> -->
+              <div class="btn-group align-items-center justify-content-center">
+                <a type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Prácticas
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="./productos.php">Productos</a></li>
+                  <li><a class="dropdown-item" href="./adivinarNumero.php">Adivinar número</a></li>
+                  <li><a class="dropdown-item" href="./NumeroParImpar.php">Num par/impar</a></li>
+                  <li><a class="dropdown-item" href="./NumeroPrimoNoprimo.php">Número primo</a></li>
+                  <li><a class="dropdown-item" href="./validacionesForm.php">Validaciones form</a></li>
+                  <li><a class="dropdown-item" href="./piramide.php">Pirámide</a></li>
+                </ul>
+              </div>
+
+              <li><a href="#" class="nav-link px-2">Link</a></li>
             </ul>
 
             <div class="col-md-3 text-end">

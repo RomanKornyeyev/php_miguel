@@ -32,7 +32,7 @@
 
 ?>
 
-  <h1 class="text-center">ADINA EL NÚMERO JEJE</h1>
+  <h1 class="text-center">PIRÁMIDE</h1>
 
   <form action="" method="post" class="form shadow-sm rounded p-5" style="max-width: 400px; margin: 0 auto;">
     <!-- numero -->

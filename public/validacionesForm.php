@@ -52,7 +52,7 @@
 
 ?>
 
-  <h1 class="text-center">ADINA EL NÚMERO JEJE</h1>
+  <h1 class="text-center">Validaciones form</h1>
 
   <?php if ($formValido) { ?>
     <div class="alert alert-success text-center" style="max-width: 400px; margin: 25px auto;">
