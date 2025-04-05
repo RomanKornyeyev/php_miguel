@@ -50,7 +50,7 @@
 
             <div class="col-md-3 text-end">
               <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
-              <a href="./Sign-up.php" class="btn btn-primary">Sign-up</a>
+              <a href="./register.php" class="btn btn-primary">Registro</a>
             </div>
           </header>
         </div>

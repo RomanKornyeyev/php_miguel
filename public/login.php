@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
 }
 
 // ********* INFO PARA EL TEMPLATE **********
-$tituloHead = "Registro de usuario";
+$tituloHead = "Login de usuario";
 $content;
 
 // ********* COMIENZO BUFFER **********
@@ -46,11 +46,11 @@ ob_start();
 
 ?>
 
-<h1 class="text-center">Registro</h1>
+<h1 class="text-center">Login</h1>
 
 <?php if ($formValido) { ?>
     <div class="alert alert-success text-center" style="max-width: 400px; margin: 25px auto;">
-        ¡Registro exitoso!
+        ¡Login exitoso!
     </div>
 <?php } else if (isset($_POST['submit'])) { ?>
     <div class="alert alert-danger text-center" style="max-width: 400px; margin: 25px auto;">
@@ -69,11 +69,11 @@ ob_start();
     <!-- Contraseña -->
     <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="********">
         <?php if (isset($errores['password'])) echo $errores['password']; ?>
     </div>
 
-    <button class="btn btn-primary" type="submit" name="submit">Registrarse</button>
+    <button class="btn btn-primary" type="submit" name="submit">Login</button>
 </form>
 
 <?php

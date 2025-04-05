@@ -25,7 +25,6 @@ if (isset($_POST["submit"])) {
     // Validar username
     if (isset($_POST['username']) && preg_match('/^[a-zA-Z0-9]{6,16}$/', $_POST['username'])) {
         $datos['username'] = clean_input($_POST['username']);
-        echo strlen($_POST['username']);
     } else {
         $errores['username'] = "<span class='text-danger'>*El username debe tener entre 6 y 16 caracteres, y solo puede contener letras y números</span>";
     }
@@ -33,7 +32,6 @@ if (isset($_POST["submit"])) {
     // Validar password
     if (!empty($_POST['password']) && strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 16) {
         $datos['password'] = clean_input($_POST['password']);
-        echo strlen($_POST['password']);
     } else {
         $errores['password'] = "<span class='text-danger'>*La password no puede estar vacía, y tiene que ser entre 6 y 16 digitos</span>";
     }
@@ -77,14 +75,14 @@ ob_start();
     <!-- Nombre de usuario -->
     <div class="mb-3">
         <label for="username" class="form-label">Nombre de usuario</label>
-        <input type="text" class="form-control" id="username" name="username" value=<?php if (isset($datos['username'])) echo $datos['username']; ?>>
+        <input type="text" class="form-control" id="username" name="username" placeholder="miguel" value=<?php if (isset($datos['username'])) echo $datos['username']; ?>>
         <?php if (isset($errores['username'])) echo $errores['username']; ?>
     </div>
 
     <!-- Contraseña -->
     <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="********">
         <?php if (isset($errores['password'])) echo $errores['password']; ?>
     </div>
 
