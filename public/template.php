@@ -49,8 +49,13 @@
             </ul>
 
             <div class="col-md-3 text-end">
-              <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
-              <a href="./register.php" class="btn btn-primary">Registro</a>
+              <?php if (isset($_SESSION['id'])) { ?>
+                <?=$_SESSION['nombre'];?>
+                <a href="./logout.php" class="btn btn-outline-danger me-2">Logout</a>
+              <?php }else{ ?>
+                <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
+                <a href="./register.php" class="btn btn-primary">Registro</a>
+              <?php } ?>
             </div>
           </header>
         </div>

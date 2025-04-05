@@ -1,17 +1,7 @@
 <?php
 
-function clean_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-//datos y errores para el form
-$errores = [];
-$datos = [];
-$formValido = false;
+/*********** INIT (DB Y DEMÁS) ***********/
+require_once("../src/init.php");
 
 // si el form se ha enviado
 if (isset($_POST["submit"])) {
@@ -38,8 +28,21 @@ if (isset($_POST["submit"])) {
 
     //si NO hay errores, hace algo
     if (count($errores) == 0) {
-        //hace algo (CRUD BD)
-        $formValido = true;
+
+        // Registro de usuario
+        $existeUsuario = DWESBaseDatos::obtenUsuarioPorMail($db, $datos['email']);
+        if ($existeUsuario != "") {
+            $FLASH_ERRORS['user_creado'] = ['El correo ya está registrado.'];
+        }else{
+            // insert
+            $insertRealizado = DWESBaseDatos::insertarUsuario($db, $datos['username'], $datos['email'], password_hash($datos['password'], PASSWORD_DEFAULT));
+            if ($insertRealizado) {
+                $FLASH_SUCCESS['user_creado'] = ['Usuario creado correctamente.'];
+            } else {
+                $FLASH_ERRORS['user_creado'] = ['Error al crear el usuario.'];
+            }
+        }
+        
     }
 }
 
@@ -54,13 +57,13 @@ ob_start();
 
 <h1 class="text-center">Registro</h1>
 
-<?php if ($formValido) { ?>
+<?php if (isset($FLASH_SUCCESS['user_creado'])) { ?>
     <div class="alert alert-success text-center" style="max-width: 400px; margin: 25px auto;">
-        ¡Registro exitoso!
+        <?=$FLASH_SUCCESS['user_creado'][0];?>
     </div>
-<?php } else if (isset($_POST['submit'])) { ?>
+<?php } else if (isset($FLASH_ERRORS['user_creado'])) { ?>
     <div class="alert alert-danger text-center" style="max-width: 400px; margin: 25px auto;">
-        El formulario contiene errores.
+        <?=$FLASH_ERRORS['user_creado'][0];?>
     </div>
 <?php } ?>
 
