@@ -153,6 +153,18 @@ class DWESBaseDatos {
     return $db->getExecuted();
   }
 
+  // obtener las notas de un usuario por id
+  public static function obtenNotasPorIdUsuario($db, $id) {
+    $db->ejecuta("SELECT * FROM notas WHERE usuario_id=? ORDER BY id DESC;", $id);
+    return $db->obtenDatos();
+  }
+
+  // obtener una nota por id
+  public static function obtenNotaPorId($db, $id) {
+    $db->ejecuta("SELECT * FROM notas WHERE id=?;", $id);
+    return $db->obtenElDato();
+  }
+
 
 
 
@@ -187,6 +199,47 @@ class DWESBaseDatos {
     }
   }
 
+  // insertar una nota
+  public static function insertarNota($db, $usuario_id, $titulo, $contenido) : bool
+  {
+    $db->ejecuta(
+      "INSERT INTO notas (usuario_id, titulo, contenido) VALUES (?, ?, ?);",
+      $usuario_id, $titulo, $contenido
+    );
+    if ($db->getExecuted()) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  // ====== UPDATES ======
+  // actualizar una nota por id
+  public static function actualizaNotaPorId($db, $id, $titulo, $contenido) : bool
+  {
+    $db->ejecuta(
+      "UPDATE notas SET titulo=?, contenido=? WHERE id=?;",
+      $titulo, $contenido, $id
+    );
+    if ($db->getExecuted()) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
 
 
 
@@ -200,6 +253,20 @@ class DWESBaseDatos {
     $db->ejecuta(
       "DELETE FROM tokens WHERE token=?;",
       $token
+    );
+    if ($db->getExecuted()) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  // borrar nota por id
+  public static function borrarNotaPorId($db, $id) : bool
+  {
+    $db->ejecuta(
+      "DELETE FROM notas WHERE id=?;",
+      $id
     );
     if ($db->getExecuted()) {
       return true;
